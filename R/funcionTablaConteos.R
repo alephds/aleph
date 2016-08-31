@@ -7,6 +7,29 @@
 #'@export
 #'@keywords conteos tabla tabladeconteos
 #'@examples
+#'load(datosFuncionConteo)
+#'datos<-datos %>%
+#'select(contains('P1Conoce'),contains('P1bConoce'),contains('P3Logos'),contains('P11'),contains('P12'))
+#'marcas<-list(
+#'  c('Banamex','Banamex'),
+#'c('Banco.Azteca','Banco Azteca'),
+#'c('Banco.Compartamos','Banco Compartamos'),
+#'c('Banco.Famsa','Famsa'),
+#'c('Banco.Walmart','Walmart'),
+#'c('Bancoppel','Bancoppel'),
+#'c('Banorte','Banorte'),
+#'c('BBVA.Bancomer','BBVA Bancomer'),
+#'c('HSBC','HSBC'),
+#'c('Inbursa','Inbursa'),
+#'c('IXE','IXE'),
+#'c('Santander','Santander'),
+#'c('Scotiabank','Scotiabank')
+#')
+
+#'resultado<-funcionTablaConteos(marcas=marcas,
+#'                                variablesFiltro=c("P1ConoceBancos.","P1bConoceBancos.","P3Logos."),
+#'                                datos=datos)
+
 
 
 funcionTablaConteos<-function(marcas,variablesFiltro,datos){
