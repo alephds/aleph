@@ -7,7 +7,7 @@
 #'@export
 #'@keywords conteos tabla tabladeconteos
 #'@examples
-#'load(datosFuncionConteo)
+#'data(datosFuncionConteo)
 #'datos<-datos %>%
 #'select(contains('P1Conoce'),contains('P1bConoce'),contains('P3Logos'),contains('P11'),contains('P12'))
 #'marcas<-list(
