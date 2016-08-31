@@ -14,5 +14,9 @@ funcionNormalizacion(conteos, totales)
 \description{
 Esta función permite crear una matriz de normalización a partir de una matriz de conteos y de un vector de tamaños de base
 }
+\examples{
+load(conteosYtotales)
+funcionNormalizacion(resultados[[1]],resultados[[2]])
+}
 \keyword{normalizacion}
 

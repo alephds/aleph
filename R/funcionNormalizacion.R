@@ -4,6 +4,8 @@
 #'@param conteos Matriz de conteos
 #'@param totales Vector de tamaños de las bases totales para cada marca
 #'@keywords normalizacion
+#'@examples load(conteosYtotales)
+#'funcionNormalizacion(resultados[[1]],resultados[[2]])
 
 
 funcionNormalizacion<-function(conteos,totales){
