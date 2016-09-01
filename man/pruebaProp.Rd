@@ -9,7 +9,7 @@ pruebaProp(tablaProp, simboloPct = F)
 \arguments{
 \item{tablaProp}{La tabla principal}
 
-\item{simboloPct}{Los datos tienen simbolo de porcentaje?  A veces al leer un .csv viene el símbolo %}
+\item{simboloPct}{Los datos tienen simbolo de porcentaje?  A veces al leer un .csv viene el símbolo de porcentaje}
 }
 \description{
 Realiza un prop.test con hipótesis alternativa "mayor qué" sobre un data frame tal que sea un resultado de frecuencias.

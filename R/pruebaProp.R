@@ -4,7 +4,7 @@
 #'La primera columna de la tabla (tabla[,1]) debe ser de las respuestas de la frecuencia
 #'La última fila del data frame debe ser el "Total" (de ahí obtiene n el prop.test)
 #'@param tablaProp La tabla principal
-#'@param simboloPct Los datos tienen simbolo de porcentaje?  A veces al leer un .csv viene el símbolo %
+#'@param simboloPct Los datos tienen simbolo de porcentaje?  A veces al leer un .csv viene el símbolo de porcentaje
 #'@export
 #'@keywords prop
 #'@examples pruebaProp(data.frame(nombres=c("Uno","Dos"),Variable1=c(48,100),Variable2=c(16,100)))
