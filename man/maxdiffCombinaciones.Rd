@@ -20,9 +20,8 @@ maxdiffCombinaciones(Atributos, nAtributos = length(Atributos), nBloques,
 Crea la batería de combinaciones para realizar un maxdiff a partir de un conjunto de atributos
 }
 \examples{
-atributosAutoD<-letters[1:10]
-combinacionesAutoD<-disenoIncompleto(Atributos=atributosAutoD, nBloques=10, AlternativasPorBloque=3, Iteraciones = 2)
-combinacionesAutoD
+combinaciones<-maxdiffCombinaciones(Atributos=letters[1:10], nBloques=10, AlternativasPorBloque=3, Iteraciones = 2)
+combinaciones
 }
 \keyword{combinaciones}
 \keyword{maxdiff}

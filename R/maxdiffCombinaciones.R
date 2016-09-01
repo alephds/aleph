@@ -7,10 +7,8 @@
 #'@param Iteraciones número de veces que el modelo buscará la combinación óptima, se recomienda utilizar una iteración para definir el número de bloques y número de atributos por bloque. Una vez definidos estos el número de iteraciones mínimas recomendadas es de 50
 #'@export
 #'@keywords maxdiff combinaciones
-#'@examples atributosAutoD<-letters[1:10]
-
-#'combinacionesAutoD<-disenoIncompleto(Atributos=atributosAutoD, nBloques=10, AlternativasPorBloque=3, Iteraciones = 2)
-#'combinacionesAutoD
+#'@examples combinaciones<-maxdiffCombinaciones(Atributos=letters[1:10], nBloques=10, AlternativasPorBloque=3, Iteraciones = 2)
+#'combinaciones
 
 
 maxdiffCombinaciones <- function(Atributos,nAtributos=length(Atributos), nBloques, AlternativasPorBloque, Iteraciones = 5){
