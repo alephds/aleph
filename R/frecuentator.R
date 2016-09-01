@@ -11,7 +11,7 @@
 #'@param fTprop Hacer prueba de proporciones? En vez de regresar la tabla de frecuencias se regresa una tabla de prueba de proporciones (igual a las de SPSS)
 #'@export
 #'@keywords frecuencias
-#'@examples 
+#'@examples
 #'frecuentator(fTtabla = iris,fTvariables = "Species",fTlevels = T,fbanner = "Species")
 
 frecuentator<- function(
@@ -32,11 +32,11 @@ frecuentator<- function(
   #Hago prueba de proporciones?
   fTprop=F
 ){
-  list.of.packages <- c("survey")
-  new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-  if(length(new.packages)) install.packages(new.packages)
+  # list.of.packages <- c("survey")
+  # new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+  # if(length(new.packages)) install.packages(new.packages)
   require("survey")
-  #################################################
+  # #################################################
   # frecuentator(fTtabla=datos[datos$A3=="Sí (Bancarizado)" & datos[,miProducto]==TRUE,],fTvariables=misBancos,fTlevels=F,fbanner=bandera1)
   # fTtabla<-datos[datos$A3=="Sí (Bancarizado)" & datos[,miProducto]==TRUE,]
   # fTvariables<-misBancos
@@ -54,13 +54,13 @@ frecuentator<- function(
   # fTtabla$Segmentos<- factor(fTtabla$Segmentos)
   #   # fTtabla$sincasos<-1
   #   # fTtabla$sincasos[1]<-2
-  #   # 
+  #   #
   #   # fTtabla$sincasos<- factor(fTtabla$sincasos,labels = c("FALSE","b"))
   #   # fTponderador<-"pond"
   #   # fTtabla$pond[1]<-NA
   #   # fTtabla$P1.Banamex[17]<-NA
   # ############## truquitos FIN
-  
+
   if(is.null(fbanner)){
     fTtabla$Total<- factor(rep(x = 1,nrow(fTtabla)),levels = 1,labels = "Total")
     fbanner<-"Total"
@@ -70,7 +70,7 @@ frecuentator<- function(
   ################################################# Supuestos...
   ################################################# Supuestos...
   ################################################# Supuestos...
-  
+
   # Existen los nombres de variables?
   if(!all(misVarz %in% names(fTtabla))){
     stop(paste("\n frecuentator Error01: No existe la variable ::",paste(misVarz[!misVarz %in% names(fTtabla)],collapse = ", "),":: en fTtabla"))
@@ -105,7 +105,7 @@ frecuentator<- function(
         fTvariables<- fTvariables[-which(names(vars)[vars][vi]==fTvariables)]
       }
     }
-  }  
+  }
   if(length(fTvariables)==0){
     stop(paste("\n frecuentator Error04: Se han omitido todas las variables del análisis porque estaban vacias, frecuencia no tiene sentido"))
   }
@@ -115,16 +115,16 @@ frecuentator<- function(
   if(fTlevels){
     # Tengo variable categórica. Debo revisar que todas tengan levels...
     if(!all(sapply(X = fTtabla[,misVarz],is.factor))){
-      stop(paste("\n frecuentator Error05: No es factor la variable ::",paste(misVarz[!sapply(X = fTtabla[,misVarz],is.factor)],collapse = ", "),":: en fTtabla")) 
+      stop(paste("\n frecuentator Error05: No es factor la variable ::",paste(misVarz[!sapply(X = fTtabla[,misVarz],is.factor)],collapse = ", "),":: en fTtabla"))
     }
     # Ahora debo revisar que todas tengan los mismos levels...y que sean más de uno
     if(!all(sapply(X = fTtabla[,fTvariables], FUN = function(x){length(levels(x))>1}))){
-      stop(paste("\n frecuentator Error06: La variable ::",paste(fTvariables[!sapply(X = fTtabla[,fTvariables], FUN = function(x){length(levels(x))>1})],collapse = ", "),":: tiene menos de 1 factor")) 
+      stop(paste("\n frecuentator Error06: La variable ::",paste(fTvariables[!sapply(X = fTtabla[,fTvariables], FUN = function(x){length(levels(x))>1})],collapse = ", "),":: tiene menos de 1 factor"))
     }
     for(vi in 1: length(fTvariables)){
       if(!all(levels(fTtabla[,fTvariables[1]])==levels(fTtabla[,fTvariables[vi]]))){
         # Tengo levels diferentes... lo siento mucho, no puedo proseguir así...
-        stop(paste("\n frecuentator Error07: La variable ::",fTvariables[vi],":: tiene levels diferentes de la variable ::",fTvariables[1],"::")) 
+        stop(paste("\n frecuentator Error07: La variable ::",fTvariables[vi],":: tiene levels diferentes de la variable ::",fTvariables[1],"::"))
       }
     }
   }else{
@@ -164,7 +164,7 @@ frecuentator<- function(
   #
   #
   #
-  
+
   if(fTlevels){
     FINAL<-data.frame()
     FINAL<- data.frame(Respuesta=1:length(levels(fTtabla[,fTvariables[1]])))
@@ -178,13 +178,13 @@ frecuentator<- function(
         "\nBanner: ",fbanner,
         "\nTiempo: ",as.character(Sys.time()),
         "\n"
-    )    
+    )
   }else{
     FINAL<-data.frame(Respuesta=fTvariables,stringsAsFactors = F)
     FINAL[nrow(FINAL)+1,"Respuesta"] <- "Total"
     row.names(FINAL) <- FINAL$Respuesta
   }
-  
+
   for(fi in 1:length(fbanner)){
     # fi <- 2
     fbannerMini<- fbanner[fi]
@@ -239,7 +239,7 @@ frecuentator<- function(
             # row.names(final)<- row.names(a)
           }
           if(nrow(final)!=0){
-            names(final)<-c("total","SE")            
+            names(final)<-c("total","SE")
           }
           final$total <- final$SE
         }else{
@@ -271,7 +271,7 @@ frecuentator<- function(
           sobreQuienFinal<- fTsobreQuien
         }
       }
-      
+
       final <- rbind(final, data.frame(total=sobreQuienFinal, SE=sobreQuienFinal,row.names = c("Total")))
       # }
       final<-data.frame(
@@ -303,7 +303,7 @@ frecuentator<- function(
       FINAL <- FINAL[,-1]
     }
   }
-  
+
   if(fTlevels){
     FINAL <- FINAL[match(c(levels(fTtabla[,fTvariables[1]]),"Total"),row.names(FINAL)),]
   }else{

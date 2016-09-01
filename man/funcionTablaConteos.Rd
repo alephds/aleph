@@ -17,7 +17,7 @@ funcionTablaConteos(marcas, variablesFiltro, datos)
 Crea la matriz de conteos a partir de variables de atribución de características
 }
 \examples{
-load(datosFuncionConteo)
+data(datosFuncionConteo)
 datos<-datos \%>\%
 select(contains('P1Conoce'),contains('P1bConoce'),contains('P3Logos'),contains('P11'),contains('P12'))
 marcas<-list(
