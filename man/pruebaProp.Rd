@@ -2,7 +2,7 @@
 % Please edit documentation in R/pruebaProp.R
 \name{pruebaProp}
 \alias{pruebaProp}
-\title{Realiza prueba de proporciones sobre un data frame (ua tabla) que sea un recuento o porcentaje de frecuencia}
+\title{Realiza prueba de proporciones sobre un data frame (una tabla) que sea un recuento o porcentaje de frecuencia}
 \usage{
 pruebaProp(tablaProp, simboloPct = F)
 }

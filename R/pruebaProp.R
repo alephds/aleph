@@ -1,4 +1,4 @@
-#'Realiza prueba de proporciones sobre un data frame (ua tabla) que sea un recuento o porcentaje de frecuencia
+#'Realiza prueba de proporciones sobre un data frame (una tabla) que sea un recuento o porcentaje de frecuencia
 #'
 #'Realiza un prop.test con hipótesis alternativa "mayor qué" sobre un data frame tal que sea un resultado de frecuencias.
 #'La primera columna de la tabla (tabla[,1]) debe ser de las respuestas de la frecuencia
@@ -7,8 +7,7 @@
 #'@param simboloPct Los datos tienen simbolo de porcentaje?  A veces al leer un .csv viene el símbolo %
 #'@export
 #'@keywords prop
-#'@examples
-#'pruebaProp(data.frame(nombres=c("Uno","Dos"),Variable1=c(48,100),Variable2=c(16,100)))
+#'@examples pruebaProp(data.frame(nombres=c("Uno","Dos"),Variable1=c(48,100),Variable2=c(16,100)))
 
 pruebaProp <- function(
   # La tabla de datos....
