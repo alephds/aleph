@@ -7,24 +7,24 @@
 #'@param simboloPct Los datos tienen simbolo de porcentaje?  A veces al leer un .csv viene el símbolo %
 #'@export
 #'@keywords prop
-#'@examples 
-#'consigueProp(data.frame(nombres=c("Uno","Dos"),Variable1=c(48,100),Variable2=c(16,100)))
+#'@examples
+#'pruebaProp(data.frame(nombres=c("Uno","Dos"),Variable1=c(48,100),Variable2=c(16,100)))
 
-consigueProp <- function(
+pruebaProp <- function(
   # La tabla de datos....
   # La primera columna es la respuesta
   # La última fila debe ser la del total
   tablaProp,
   simboloPct=F
 ){
-  
+
   # consigueProp(tablaProp = listado[[i]],simboloPct = T)
-  # 
+  #
   # tablaProp <- testin
   # simboloPct <- F
 
   ################################################# Supuestos...
-  
+
   # Mi primer columna, es texto
   if(simboloPct){
     final <- as.data.frame(sapply(tablaProp[2:length(tablaProp)], function(x){strsplit(x,split = "%")}),stringsAsFactors = F)
@@ -32,7 +32,7 @@ consigueProp <- function(
   }else{
     final <- as.data.frame(sapply(tablaProp[2:length(tablaProp)], function(x){as.numeric(as.character(x))}))
   }
-  
+
   tablaSPMirror <- final
 
   for(spi in 1:(nrow(final)-1)){
@@ -73,10 +73,10 @@ consigueProp <- function(
     }
   }
   names(tablaSPMirror) <- paste(names(tablaSPMirror),"(",LETTERS[1:length(tablaSPMirror)],")",sep = "")
-  
+
   rowNombres <- tablaProp[,1]
   nombreN <- names(tablaProp)[1]
-  
+
   tablaProp <- cbind(tablaProp[,1],tablaSPMirror)
   tablaProp[,1] <- rowNombres
   names(tablaProp)[1] <- nombreN
