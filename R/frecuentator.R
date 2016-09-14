@@ -132,7 +132,15 @@ frecuentator<- function(
     # Si mi variable no es lógica, forzarla...
     if(!all(sapply(X = fTtabla[,fTvariables],is.logical))){
       warning(paste("\n frecuentator Advertencia: No es logic la variable ::",paste(fTvariables[!sapply(X = fTtabla[,fTvariables],is.logical)],collapse = ", "),":: se forzará a logic"))
-      fTtabla[,fTvariables]<-as.logical(apply(X = fTtabla[,fTvariables],MARGIN = 2,FUN = as.character))
+      if(
+        # Cuando uso datos desde un csv (i.e. no etiquetados) necesito convertirlos a logicos desce "numeric"
+        all(c(1,0) %in% unique(fTtabla[,fTvariables[1]]))
+      ){
+        fTtabla[,fTvariables]<-as.logical(apply(X = fTtabla[,fTvariables],MARGIN = 2,FUN = as.numeric))
+      }else{
+        # Cuando uso datos desde un .sav (i.e. etiquetados) necesito convertirlos a logicos desce "character"
+        fTtabla[,fTvariables]<-as.logical(apply(X = fTtabla[,fTvariables],MARGIN = 2,FUN = as.character))
+      }
       # sapply(X = fTtabla[,fTvariables],FUN = function(X){X[is.na(X)]<-F})
       fTtabla[is.na(fTtabla)]<-F
       #Ahora debo revisar que no haya NA en las variables...
