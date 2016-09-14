@@ -11,13 +11,28 @@
 #'@examples 
 #'importarAbiertas(misDatos = datos,misVaria = nombresR(datos,"P5"),micatalog = read.csv("./abiertas/finalP5.csv"),misVariablesFinales = "Total")
 
-importarAbiertas <- function(misDatos,misVaria,micatalog,misVariablesFinales){
+function(misDatos,misVaria,micatalog,misVariablesFinales=NULL){
   # misDatos <- datos
-  # misVaria <- nombresR(datos,"P5")
-  # micatalog <- catalogo
-  # misVariablesFinales <- "Total"
+  # misVaria <- "P5.HSBC.2"
+  # micatalog <- read.csv("./abiertas/finalP5VF.csv")
+  # misVariablesFinales <- bandera1
   
   fcatalogo <- NULL
+  finalV <- NULL
+  # Hago que todas las columnas de micatalogo sean el mismo factor....
+  for(ppi in 2:length(micatalog)){
+    # ppi <- 2
+    vector <- micatalog[,ppi]
+    vector <- as.character(vector)
+    finalV <- c(finalV,vector)
+  }
+  finalV <- unique(finalV)
+  finalV <- factor(finalV)
+  for(ppi in 2:length(micatalog)){
+    # ppi <- 2
+    micatalog[,ppi] <- as.character(micatalog[,ppi])
+    micatalog[,ppi] <- factor(x = micatalog[,ppi],levels = finalV)
+  }
   for(pp in 1:length(misVaria)){
     # Para cada variable tantas codificaciones hayan salido...
     # pp <- 1
@@ -32,3 +47,4 @@ importarAbiertas <- function(misDatos,misVaria,micatalog,misVariablesFinales){
   }
   return(misDatos[,c(misVariablesFinales,fcatalogo)])
 }
+
