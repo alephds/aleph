@@ -37,11 +37,12 @@ frecuentator<- function(
   # if(length(new.packages)) install.packages(new.packages)
   require("survey")
   # #################################################
-  # frecuentator(fTtabla=datos[datos$A3=="Sí (Bancarizado)" & datos[,miProducto]==TRUE,],fTvariables=misBancos,fTlevels=F,fbanner=bandera1)
-  # fTtabla<-datos[datos$A3=="Sí (Bancarizado)" & datos[,miProducto]==TRUE,]
-  # fTvariables<-misBancos
+  # # frecuentator(fTtabla=datos[datos$A3=="Sí (Bancarizado)" & datos[,miProducto]==TRUE,],fTvariables=misBancos,fTlevels=F,fbanner=bandera1)
+  # frecuentator(fTtabla = datos,fTvariables = "P19_E_1_A_la_Agencia",fTlevels = F)
+  # fTtabla<-datos
+  # fTvariables<-"P19_E_1_A_la_Agencia"
   # fTlevels<-F
-  # fbanner <- bandera1
+  # fbanner <- NULL
   # fTponderador<-NULL
   # fTsobreQuien<- NULL
   # fTtotal<-T
@@ -136,10 +137,10 @@ frecuentator<- function(
         # Cuando uso datos desde un csv (i.e. no etiquetados) necesito convertirlos a logicos desce "numeric"
         all(c(1,0) %in% unique(fTtabla[,fTvariables[1]]))
       ){
-        fTtabla[,fTvariables]<-as.logical(apply(X = fTtabla[,fTvariables],MARGIN = 2,FUN = as.numeric))
+        fTtabla[,fTvariables]<- apply(X = subset(fTtabla,select = fTvariables),MARGIN = 2,FUN = as.logical)
       }else{
         # Cuando uso datos desde un .sav (i.e. etiquetados) necesito convertirlos a logicos desce "character"
-        fTtabla[,fTvariables]<-as.logical(apply(X = fTtabla[,fTvariables],MARGIN = 2,FUN = as.character))
+        fTtabla[,fTvariables]<-as.logical(apply(X = subset(fTtabla,select = fTvariables),MARGIN = 2,FUN = as.character))
       }
       # sapply(X = fTtabla[,fTvariables],FUN = function(X){X[is.na(X)]<-F})
       fTtabla[is.na(fTtabla)]<-F
