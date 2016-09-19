@@ -11,7 +11,7 @@
 #'@examples 
 #'importarAbiertas(misDatos = datos,misVaria = nombresR(datos,"P5"),micatalog = read.csv("./abiertas/finalP5.csv"),misVariablesFinales = "Total")
 
-function(misDatos,misVaria,micatalog,misVariablesFinales=NULL){
+importaAbiertas<-function(misDatos,misVaria,micatalog,misVariablesFinales=NULL){
   # misDatos <- datos
   # misVaria <- "P5.HSBC.2"
   # micatalog <- read.csv("./abiertas/finalP5VF.csv")
