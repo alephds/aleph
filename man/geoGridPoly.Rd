@@ -13,8 +13,14 @@
 \description{Genera un grid regular de puntos sobre un polígono arbitrario, usualmente usado para predecir con kriging.
   }
 \examples{
-  data(mapMunicipal.RData); data(mapaMunicipalCentroides.RData)
-  geoGridPoly(mapMunicipal, 1000, mapaMunicipalCentroides)
+  data(mapas.RData)
+  #con centroides
+  con_centr <- geoGridPoly(tabasco, 1000, centroides)
+  #sin centroides
+  sin_centr <- geoGridPoly(tabasco, 1000)
+  
+  plot(con_centr)
+  plot(sin_centr)
 }
 \keyword{grid}
 \keyword{kriging}
