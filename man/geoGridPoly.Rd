@@ -3,17 +3,18 @@
 \alias{geoGridPoly}
 \title{Función para superponer un grid sobre un polígono}
 \usage{
-  frecuentator(fTtabla, fTvariables, fTlevels = T, fbanner = NULL,
-               fTponderador = NULL, fTsobreQuien = NULL, fTtotal = T, fTprop = F)
+  geoGridPoly(mapa_orig, npuntos, centroides)
 }
 \arguments{
-  \item{mapa_orig}{SpatialPolygonDataFrame}
-  
+  \item{mapa_orig}{SpatialPolygonDataFrame que contiene al polígono sobre el cual se quiere generar el grid.}
+  \item{npuntos}{Entero que da el número de puntos a generar.}
+  \item{centroides}{SpatialPointsDataFrame que contiene a los centroides del polígono, opcional.}
 }
-\description{bla
+\description{Genera un grid regular de puntos sobre un polígono arbitrario, usualmente usado para predecir con kriging.
   }
 \examples{
-  frecuentator(fTtabla = iris,fTvariables = "Species",fTlevels = T,fbanner = "Species")
+  data(mapMunicipal.RData); data(mapaMunicipalCentroides.RData)
+  geoGridPoly(mapMunicipal, 1000, mapaMunicipalCentroides)
 }
 \keyword{grid}
 \keyword{kriging}
