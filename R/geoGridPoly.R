@@ -1,7 +1,7 @@
 
 # Los centroides son opcionales -----------------------------------------
 
-grid_irreg <- function(mapa_orig, npuntos, centroides){
+geoGridPoly<- function(mapa_orig, npuntos, centroides){
   library(raster); library(sp)
   grid <- sp::makegrid(mapa_orig, npuntos)
   puntos <- SpatialPoints(grid, proj4string = CRS(proj4string(map_orig)))
