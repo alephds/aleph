@@ -1,8 +1,8 @@
-Package: brostatistics
-Title: Statistics for bros
+Package: aleph
+Title: Aleph Package
 Version: 0.0.0.9000
-Authors@R: person("All the", "bros", email = "pelishk@gmail.com", role = c("aut", "cre"))
-Description: Such manliness, very bros, wow.
+Authors@R: person("All the", "bros", email = "pablotavera@alephds.com", role = c("aut", "cre"))
+Description: Such maths, very data, wow.
 Depends: R (>= 3.2.2),dplyr,survey,AlgDesign,sjmisc
 Imports: dplyr
 License: GPL-2
