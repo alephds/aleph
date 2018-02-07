@@ -3,6 +3,7 @@
 export(frecuentator)
 export(funcionNormalizacion)
 export(funcionTablaConteos)
+export(jaccard)
 export(maxdiffCombinaciones)
 export(maxdiffModelo)
 export(nombresR)
